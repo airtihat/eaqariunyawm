@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>عقاري يوم – نموذج الكرة الأرضية</title>
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; }
+    #globeViz { width: 100%; height: 100vh; background: #000; }
+  </style>
+</head>
+<body>
+  <div id="globeViz"></div>
+
+  <!-- استدعاء المكتبة -->
+  <script src="https://unpkg.com/globe.gl"></script>
+  <script>
+    const globe = Globe()
+      .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+      .pointsData([
+        { lat: 24.7136, lng: 46.6753, size: 1, name: "الرياض" },
+        { lat: 21.3891, lng: 39.8579, size: 1, name: "جدة" },
+        { lat: 25.3548, lng: 51.1839, size: 1, name: "الدوحة" },
+      ])
+      .pointAltitude('size')
+      .pointColor(() => 'orange')
+      .pointLabel(d => d.name);
+
+    globe(document.getElementById('globeViz'));
+  </script>
+</body>
+</html>
